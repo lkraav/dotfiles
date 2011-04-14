@@ -97,6 +97,16 @@ cpuwidget:set_color("#FF5656")
 cpuwidget:set_gradient_colors({ "#FF5656", "#88A175", "#AECF96" })
 -- Register widget
 vicious.register(cpuwidget, vicious.widgets.cpu, "$1", 1)
+-- Vicious CPU temperature widget
+thermalwidget_t0  = widget({ type = "textbox" })
+vicious.register(thermalwidget_t0, vicious.widgets.thermal,
+	function (widget, args)
+		return string.format("%02d°", args[1])
+        end, 2, "thermal_zone0")
+thermalwidget_core0  = widget({ type = "textbox" })
+vicious.register(thermalwidget_core0, vicious.widgets.thermal, "$1°", 2, { "coretemp.0", "core" })
+thermalwidget_core2  = widget({ type = "textbox" })
+vicious.register(thermalwidget_core2, vicious.widgets.thermal, "$1°", 2, { "coretemp.2", "core" })
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
 
@@ -174,6 +184,7 @@ for s = 1, screen.count() do
         mylayoutbox[s],
         mytextclock,
         s == 1 and mysystray or nil,
+        thermalwidget_t0, thermalwidget_core0, thermalwidget_core2,
         cpuwidget,
         batwidget,
         mytasklist[s],
