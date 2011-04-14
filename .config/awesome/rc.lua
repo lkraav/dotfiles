@@ -87,6 +87,16 @@ batwidget:set_border_color(nil)
 batwidget:set_color("#AECF96")
 batwidget:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
 vicious.register(batwidget, vicious.widgets.bat, "$2", 61, "BAT0")
+-- Vicious CPU usage widget
+cpuwidget = awful.widget.graph()
+-- Graph properties
+cpuwidget:set_width(24)
+cpuwidget:set_height(24)
+cpuwidget:set_background_color("#494B4F")
+cpuwidget:set_color("#FF5656")
+cpuwidget:set_gradient_colors({ "#FF5656", "#88A175", "#AECF96" })
+-- Register widget
+vicious.register(cpuwidget, vicious.widgets.cpu, "$1", 1)
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
 
@@ -164,6 +174,7 @@ for s = 1, screen.count() do
         mylayoutbox[s],
         mytextclock,
         s == 1 and mysystray or nil,
+        cpuwidget,
         batwidget,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
