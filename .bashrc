@@ -16,3 +16,4 @@ fi
 
 
 # Put your fun stuff here.
+export EDITOR="/usr/bin/vim"
