@@ -44,7 +44,7 @@ layouts =
 -- {{{ Tags
 -- Define a tag table which will hold all screen tags.
 tags = {
-    names  = { "www", "mail", "code", "office", "im", 6, 7, 8, 9 },
+    names  = { "www", "@me", "prg", "off", "msg", 6, 7, 8, 9 },
     layout = { layouts[1], layouts[5], layouts[2], layouts[5], layouts[2],
                layouts[1], layouts[1], layouts[1], layouts[1] }
 }
@@ -140,7 +140,7 @@ for s = 1, screen.count() do
                                           end, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s })
+    mywibox[s] = awful.wibox({ position = "top", height = "24", screen = s })
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = {
         {
