@@ -82,7 +82,11 @@ freedesktop.utils.terminal = terminal  -- default: "xterm"
 freedesktop.utils.icon_theme = 'gnome' -- look inside /usr/share/icons/, default: nil (don't use icon theme)
 require('freedesktop.menu')
 
-menu_items = freedesktop.menu.new()
+menu_items = freedesktop.menu.new( { menu_dirs = {
+	"/usr/share/applications",
+	os.getenv("HOME") .. "/.local/share/applications",
+}})
+
 myawesomemenu = {
    { "manual", terminal .. " -e man awesome", freedesktop.utils.lookup_icon({ icon = 'help' }) },
    { "edit config", editor_cmd .. " " .. awful.util.getdir("config") .. "/rc.lua", freedesktop.utils.lookup_icon({ icon = 'package_settings' }) },
