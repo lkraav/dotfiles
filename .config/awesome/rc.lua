@@ -206,6 +206,8 @@ for s = 1, screen.count() do
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "top", height = "24", screen = s })
     -- Add widgets to the wibox - order matters
+    -- Make sure we reference .widget classes
+    -- https://awesome.naquadah.org/wiki/Widgets_in_awesome#Controlling_widgets)
     mywibox[s].widgets = {
         {
             mylauncher,
@@ -217,8 +219,8 @@ for s = 1, screen.count() do
         mytextclock,
         s == 1 and mysystray or nil,
         thermalwidget_t0, thermalwidget_core0, thermalwidget_core2,
-        cpuwidget,
-        batwidget,
+        cpuwidget.widget,
+        batwidget.widget,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
