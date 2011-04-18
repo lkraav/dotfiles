@@ -13,6 +13,21 @@ require("vicious")
 -- Themes define colours, icons, and wallpapers
 beautiful.init(awful.util.getdir("config") .. "/themes/zenburn.lua")
 
+batteryicon = widget({ type = "textbox" })
+batteryicon.bg_image = image(beautiful.widget_battery)
+batteryicon.bg_align = "middle"
+batteryicon.width = 16
+
+cpuicon = widget({ type = "textbox" })
+cpuicon.bg_image = image(beautiful.widget_cpu)
+cpuicon.bg_align = "middle"
+cpuicon.width = 16
+
+tempicon = widget({ type = "textbox" })
+tempicon.bg_image = image(beautiful.widget_temp)
+tempicon.bg_align = "middle"
+tempicon.width = 16
+
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
 editor = os.getenv("EDITOR") or "nano"
@@ -109,25 +124,27 @@ for s = 1, screen.count() do
 end
 
 -- {{{ Wibox
+-- Separator widget
+separator = widget({ type = "textbox" })
+separator.text  = " "
+
 -- Vicious battery widget
 batwidget = awful.widget.progressbar()
-batwidget:set_width(8)
-batwidget:set_height(24)
+batwidget:set_width(16)
+batwidget:set_height(16)
 batwidget:set_vertical(true)
 batwidget:set_background_color("#494B4F")
-batwidget:set_border_color(nil)
+batwidget:set_border_color("black")
 batwidget:set_color("#AECF96")
 batwidget:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
 vicious.register(batwidget, vicious.widgets.bat, "$2", 61, "BAT0")
 -- Vicious CPU usage widget
 cpuwidget = awful.widget.graph()
--- Graph properties
-cpuwidget:set_width(24)
-cpuwidget:set_height(24)
-cpuwidget:set_background_color("#494B4F")
+cpuwidget:set_width(16)
+cpuwidget:set_height(16)
+cpuwidget:set_background_color("black")
 cpuwidget:set_color("#FF5656")
 cpuwidget:set_gradient_colors({ "#FF5656", "#88A175", "#AECF96" })
--- Register widget
 vicious.register(cpuwidget, vicious.widgets.cpu, "$1", 1)
 -- Vicious CPU temperature widget
 thermalwidget_t0  = widget({ type = "textbox" })
@@ -137,7 +154,7 @@ vicious.register(thermalwidget_t0, vicious.widgets.thermal,
         end, 2, "thermal_zone0")
 thermalwidget_core0  = widget({ type = "textbox" })
 vicious.register(thermalwidget_core0, vicious.widgets.thermal, "$1°", 2, { "coretemp.0", "core" })
-thermalwidget_core2  = widget({ type = "textbox" })
+thermalwidget_core2 = widget({ type = "textbox" })
 vicious.register(thermalwidget_core2, vicious.widgets.thermal, "$1°", 2, { "coretemp.2", "core" })
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
@@ -204,7 +221,7 @@ for s = 1, screen.count() do
                                           end, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", height = "24", screen = s })
+    mywibox[s] = awful.wibox({ position = "top", height = "16", screen = s })
     -- Add widgets to the wibox - order matters
     -- Make sure we reference .widget classes
     -- https://awesome.naquadah.org/wiki/Widgets_in_awesome#Controlling_widgets)
@@ -218,9 +235,16 @@ for s = 1, screen.count() do
         mylayoutbox[s],
         mytextclock,
         s == 1 and mysystray or nil,
-        thermalwidget_t0, thermalwidget_core0, thermalwidget_core2,
+	separator,
+        -- thermalwidget_t0, 
+	thermalwidget_core0, thermalwidget_core2,
+	tempicon,
+	separator,
         cpuwidget.widget,
+	cpuicon,
+	separator,
         batwidget.widget,
+	batteryicon,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }

@@ -121,6 +121,12 @@ theme.titlebar_maximized_button_normal_active = "/usr/share/awesome/themes/zenbu
 theme.titlebar_maximized_button_focus_inactive  = "/usr/share/awesome/themes/zenburn/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_inactive = "/usr/share/awesome/themes/zenburn/titlebar/maximized_normal_inactive.png"
 -- }}}
+
+-- {{{ CPU widget
+theme.widget_battery = awful.util.getdir("config") .. "/icons/dzen/power-bat.png"
+theme.widget_cpu = awful.util.getdir("config") .. "/icons/dzen/cpu.png"
+theme.widget_temp = awful.util.getdir("config") .. "/icons/dzen/temp.png"
+-- }}}
 -- }}}
 
 return theme
