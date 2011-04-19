@@ -17,6 +17,7 @@ fi
 
 # Put your fun stuff here.
 export EDITOR="/usr/bin/vim"
+export WINEDEBUG=-all
 
 # SSH keychain
 eval `keychain --eval --quiet identity`
