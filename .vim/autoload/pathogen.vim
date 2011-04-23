@@ -1,0 +1,1 @@
+/home/leho/dev/vim-pathogen.git/autoload/pathogen.vim
