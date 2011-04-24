@@ -1,0 +1,10 @@
+set show-line-numbers = yes
+set show-date = relative
+set tab-size = 4
+
+bind generic L !git log %(file)
+bind status a !git commit --amend
+bind status w !qfile %(file)
+bind status i !git add -i %(file)
+bind status I !git add -N %(file)
+bind tree D !git log %(directory)
