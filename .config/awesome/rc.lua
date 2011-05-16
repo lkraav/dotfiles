@@ -139,6 +139,12 @@ batwidget:set_border_color("black")
 batwidget:set_color("#AECF96")
 batwidget:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
 vicious.register(batwidget, vicious.widgets.bat, "$2", 61, "BAT0")
+-- Vicious battery remaining widget
+batremwidget = widget({ type = "textbox" })
+vicious.register(batremwidget, vicious.widgets.bat,
+	function (widget, args)
+		return args[2] < 100 and string.format("%02d%%", args[2]) or nil
+	end, 62, "BAT0")
 -- Vicious CPU usage widget
 cpuwidget = awful.widget.graph()
 cpuwidget:set_width(16)
@@ -244,6 +250,7 @@ for s = 1, screen.count() do
         cpuwidget.widget,
 	cpuicon,
 	separator,
+	batremwidget,
         batwidget.widget,
 	batteryicon,
         mytasklist[s],
