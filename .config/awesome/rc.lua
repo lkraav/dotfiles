@@ -143,7 +143,7 @@ vicious.register(batwidget, vicious.widgets.bat, "$2", 61, "BAT0")
 batremwidget = widget({ type = "textbox" })
 vicious.register(batremwidget, vicious.widgets.bat,
 	function (widget, args)
-		return args[2] < 100 and string.format("%02d%%", args[2]) or nil
+		return args[2] < 99 and string.format("%02d%%", args[2]) or nil
 	end, 62, "BAT0")
 -- Vicious CPU usage widget
 cpuwidget = awful.widget.graph()
