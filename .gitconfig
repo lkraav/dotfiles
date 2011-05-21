@@ -1,3 +1,6 @@
+[core]
+	pager = tig
+
 [user]
 	name = leho
 	email = leho@kraav.com
