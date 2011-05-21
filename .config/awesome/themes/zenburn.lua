@@ -8,7 +8,7 @@
 
 -- {{{ Main
 theme = {}
-theme.wallpaper_cmd = { "awsetbg /usr/share/awesome/themes/zenburn/zenburn-background.png" }
+theme.wallpaper_cmd = { "awsetbg " .. awful.util.getdir("config") .. "/themes/zenburn-negate-background.png" }
 -- }}}
 
 -- {{{ Styles
