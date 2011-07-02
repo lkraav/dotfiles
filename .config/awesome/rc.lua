@@ -30,7 +30,7 @@ tempicon.width = 16
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
-terminal_small = "xterm -fs 8"
+terminal_small = "xterm -fs 9"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
