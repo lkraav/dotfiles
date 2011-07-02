@@ -376,10 +376,9 @@ for i = 1, keynumber do
                   end),
         awful.key({ modkey, "Control" }, "#" .. i + 9,
                   function ()
-                      local screen = mouse.screen
-                      if tags[screen][i] then
-                          awful.tag.viewtoggle(tags[screen][i])
-                      end
+		      for s = 1, screen.count() do
+		          awful.tag.viewonly(tags[s][i])
+		      end
                   end),
         awful.key({ modkey, "Shift" }, "#" .. i + 9,
                   function ()
