@@ -29,3 +29,6 @@ export XAUTHORITY="/home/leho/.Xauthority"
 
 alias ps1-vcprompt='PS1=$PS1_VCPROMPT; export PS1'
 alias ps1-novcprompt='PS1=$PS1_NOVCPROMPT; export PS1'
+
+# If you use non-login shells you still need to
+[ -f /etc/profile.d/bash-completion.sh ] && source /etc/profile.d/bash-completion.sh
