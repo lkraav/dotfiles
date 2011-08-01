@@ -88,6 +88,7 @@ XLock.erasemode: no_fade
 !! --- Xterm ---
 XTerm*boldColors: false
 XTerm*borderWidth: 0 
+XTerm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
 XTerm*cursorBlind: true
 XTerm*cutNewLine: false
 XTerm*dynamicColors: true
