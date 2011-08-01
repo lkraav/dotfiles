@@ -22,6 +22,7 @@ PS1_NOVCPROMPT='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
 export EDITOR="/usr/bin/vim"
 export PS1=$PS1_VCPROMPT
 export WINEDEBUG=-all
+export XAUTHORITY="/home/leho/.Xauthority"
 
 # SSH keychain
 [ ! -n SUDO_USER ] && eval `keychain --eval --quiet identity`
