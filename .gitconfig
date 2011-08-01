@@ -1,3 +1,6 @@
+[alias]
+	log1 = !git --no-pager log --graph --pretty=tformat:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
 [color]
 	diff = true
 	interactive = true
