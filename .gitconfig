@@ -1,3 +1,7 @@
+[color]
+	diff = true
+	interactive = true
+
 [core]
 	pager = tig
 
