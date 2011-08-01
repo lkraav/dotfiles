@@ -29,6 +29,7 @@ export XAUTHORITY="/home/leho/.Xauthority"
 
 alias dmesg-tail='sudo dmesg | tail -n 50'
 alias dmesg-less='sudo dmesg | less'
+alias emerge-keywords='sudo ACCEPT_KEYWORDS=~x86 emerge'
 alias ls-head='ls -lt | head'
 alias ps1-vcprompt='PS1=$PS1_VCPROMPT; export PS1'
 alias ps1-novcprompt='PS1=$PS1_NOVCPROMPT; export PS1'
