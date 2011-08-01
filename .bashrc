@@ -27,8 +27,13 @@ export XAUTHORITY="/home/leho/.Xauthority"
 # SSH keychain
 [ ! -n SUDO_USER ] && eval `keychain --eval --quiet identity`
 
+alias dmesg-tail='sudo dmesg | tail -n 50'
+alias dmesg-less='sudo dmesg | less'
+alias ls-head='ls -lt | head'
 alias ps1-vcprompt='PS1=$PS1_VCPROMPT; export PS1'
 alias ps1-novcprompt='PS1=$PS1_NOVCPROMPT; export PS1'
+alias xcalib-dark='xcalib -alter -invert'
+alias xrdb-defaults='xrdb -load ~/.Xresources'
 
 # If you use non-login shells you still need to
 [ -f /etc/profile.d/bash-completion.sh ] && source /etc/profile.d/bash-completion.sh
