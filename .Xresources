@@ -77,6 +77,14 @@
 *color7:                S_base02
 *color15:               S_base03
 
+!! --- XLock ---
+XLock.clock.count: 1
+XLock.clock.size: 0
+XLock.description: False
+Xlock.echokeys: True
+XLock.echokey: *
+XLock.erasemode: no_fade
+
 !! --- Xterm ---
 XTerm*boldColors: false
 XTerm*borderWidth: 0 
