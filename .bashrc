@@ -36,6 +36,7 @@ alias ps1-novcprompt='PS1=$PS1_NOVCPROMPT; export PS1'
 alias xcalib-dark='xcalib -alter -invert'
 alias xephyr-awesome='Xephyr -ac -br -noreset -screen 800x600 :1 & sleep 1; DISPLAY=:1.0 awesome -c ~/.config/awesome/rc.lua.new'
 alias xrdb-defaults='xrdb -load ~/.Xresources'
+alias sudo='sudo '
 
 # If you use non-login shells you still need to
 [ -f /etc/profile.d/bash-completion.sh ] && source /etc/profile.d/bash-completion.sh
