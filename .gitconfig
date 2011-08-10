@@ -1,4 +1,5 @@
 [alias]
+	clonez = "!sh -c 'git clone $1 $PWD/$GIT_PREFIX${1##*/}' -"
 	log1 = !git --no-pager log --graph --pretty=tformat:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 
 [color]
