@@ -7,6 +7,7 @@
 	interactive = true
 
 [core]
+	editor = vim -c ':normal gg'
 	pager = tig
 
 [user]
