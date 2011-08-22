@@ -101,6 +101,16 @@ xterm*selectToClipboard: true
 xterm*termName: xterm-256color
 xterm*toolBar: false
 
+!! --- URxvt ---
+URxvt*font: xft:monospace:size=9
+URxvt*intensityStyles: false
+URxvt*internalBorder: 1
+URxvt.keysym.C-plus: command:\033]710;xft:monospace:size=9\007\033]711;xft:monospace:size=9\007
+URxvt.keysym.C-minus: command:\033]710;xft:monospace:size=8\007\033]711;xft:monospace:size=8\007
+URxvt*letterSpace: -1
+URxvt*scrollBar: false
+URxvt*transparent: true
+
 !! --- Fonts ---
 !! https://wiki.archlinux.org/index.php/Font_Configuration
 Xft.autohint: 0
