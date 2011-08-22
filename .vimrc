@@ -6,6 +6,7 @@ call pathogen#runtime_append_all_bundles()
 set cursorline
 set expandtab
 set number
+set shiftwidth=4
 set splitright
 set tabstop=4
 
