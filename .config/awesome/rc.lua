@@ -321,7 +321,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
-    awful.key({ modkey,		  }, "F10",   function () awful.util.spawn("scrot") end),
+    awful.key({ modkey,		  }, "F10",   function () awful.util.spawn("scrot -e 'mv $f ~/Pictures'") end),
     awful.key({ modkey,		  }, "l",     function () awful.util.spawn("xlock -mode clock") end),
 
     -- Prompt
