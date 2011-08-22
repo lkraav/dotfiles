@@ -416,8 +416,20 @@ awful.rules.rules = {
     -- Set Firefox to always map on tags number 1 of screen 1.
     { rule = { class = "Firefox" },
        properties = { tag = tags[1][1] } },
+    { rule = { class = "Gvim" },
+      properties = { size_hints_honor = false } },
+    { rule = { class = "KeePass.exe" },
+       properties = { maximized_vertical = true, maximized_horizontal = true } },
+    { rule = { class = "Mirage" },
+       properties = { maximized_vertical = true, maximized_horizontal = true } },
+    { rule = { class = "Navigator" },
+       properties = { tag = tags[1][1], maximized_vertical = true, maximized_horizontal = true } },
     { rule = { class = "pinentry" },
         properties = { floating = true }, callback = awful.placement.centered },
+    { rule = { name = "Scan results" },
+        callback = function(c)
+            c:geometry( { width = 800, height = 400 } )
+        end },
     { rule = { class = "Skype" },
       properties = { tag = tags[1][5] } },
     { rule = { class = "Thunderbird" },
@@ -426,8 +438,16 @@ awful.rules.rules = {
        properties = { tag = tags[1][8] } },
     { rule = { class = "URxvt" },
       properties = { size_hints_honor = false } },
+    { rule = { class = "Vncviewer" },
+       properties = { maximized_vertical = true, maximized_horizontal = true } },
+    { rule = { class = "Wpa_gui" },
+        properties = { floating = true }, callback = awful.placement.centered },
+    { rule = { class = "XMind" },
+       properties = { maximized_vertical = true, maximized_horizontal = true } },
     { rule = { class = "XTerm" },
       properties = { size_hints_honor = false } },
+    { rule = { instance = "XTerm-logs" },
+       properties = { tag = tags[1][9] } },
 }
 -- }}}
 
