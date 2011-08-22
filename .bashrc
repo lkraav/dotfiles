@@ -40,3 +40,7 @@ alias sudo='sudo '
 
 # If you use non-login shells you still need to
 [ -f /etc/profile.d/bash-completion.sh ] && source /etc/profile.d/bash-completion.sh
+
+# tig can't parse ANSI
+# https://github.com/jonas/tig/issues/8
+git() { if [ $1 = "diff" -o $1 = "show" ]; then CMD=$1; shift; command git $CMD --no-color "$@"; else command git "$@"; fi; }
