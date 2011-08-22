@@ -29,8 +29,8 @@ tempicon.bg_align = "middle"
 tempicon.width = 16
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
-terminal_small = "xterm -fs 9"
+terminal = "urxvt"
+terminal_small = "urxvt -fn \"xft:monospace:size=8\""
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -426,6 +426,8 @@ awful.rules.rules = {
        properties = { tag = tags[1][2] } },
     { rule = { class = "Tomboy" },
        properties = { tag = tags[1][8] } },
+    { rule = { class = "URxvt" },
+      properties = { size_hints_honor = false } },
 }
 -- }}}
 
