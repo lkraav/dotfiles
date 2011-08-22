@@ -86,20 +86,20 @@ XLock.echokey: *
 XLock.erasemode: no_fade
 
 !! --- Xterm ---
-XTerm*boldColors: false
-XTerm*borderWidth: 0 
-XTerm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
-XTerm*cursorBlind: true
-XTerm*cutNewLine: false
-XTerm*dynamicColors: true
-XTerm*faceName: monospace
-XTerm*faceSize: 10 
-XTerm*internalBorder: 8
-XTerm*pointerMode: 2
-XTerm*renderFont: true
-XTerm*selectToClipboard: true
-XTerm*termName: xterm-256color
-XTerm*toolBar: false
+xterm*boldColors: false
+xterm*borderWidth: 0 
+xterm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+xterm*cursorBlind: true
+xterm*cutNewLine: false
+xterm*dynamicColors: true
+xterm*faceName: monospace
+xterm*faceSize: 10 
+xterm*internalBorder: 4
+xterm*pointerMode: 2
+xterm*renderFont: true
+xterm*selectToClipboard: true
+xterm*termName: xterm-256color
+xterm*toolBar: false
 
 !! --- Fonts ---
 !! https://wiki.archlinux.org/index.php/Font_Configuration
