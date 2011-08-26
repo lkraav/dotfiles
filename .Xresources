@@ -20,14 +20,14 @@
 !!cyan      #2aa198  6/6 cyan      37 #00afaf 60 -35 -05  42 161 152 175  74  63
 !!green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60
 
-#define S_base03        #002b36
-#define S_base02        #073642
-#define S_base01        #586e75
-#define S_base00        #657b83
-#define S_base0         #839496
-#define S_base1         #93a1a1
-#define S_base2         #eee8d5
-#define S_base3         #fdf6e3
+#define S_base3         #002b36
+#define S_base2         #073642
+#define S_base1         #586e75
+#define S_base0         #657b83
+#define S_base00        #839496
+#define S_base01        #93a1a1
+#define S_base02        #eee8d5
+#define S_base03        #fdf6e3
 #define S_yellow        #b58900
 #define S_orange        #cb4b16
 #define S_red           #dc322f
@@ -46,8 +46,8 @@
 *pointerColorForeground:S_base1
 
 !! black dark/light
-*color0:                S_base02
-*color8:                S_base03
+*color0:                S_base2
+*color8:                S_base3
 
 !! red dark/light
 *color1:                S_red
@@ -55,15 +55,15 @@
 
 !! green dark/light
 *color2:                S_green
-*color10:               S_base01
+*color10:               S_base1
 
 !! yellow dark/light
 *color3:                S_yellow
-*color11:               S_base00
+*color11:               S_base0
 
 !! blue dark/light
 *color4:                S_blue
-*color12:               S_base0
+*color12:               S_base00
 
 !! magenta dark/light
 *color5:                S_magenta
@@ -71,11 +71,11 @@
 
 !! cyan dark/light
 *color6:                S_cyan
-*color14:               S_base1
+*color14:               S_base01
 
 !! white dark/light
-*color7:                S_base2
-*color15:               S_base3
+*color7:                S_base02
+*color15:               S_base03
 
 !! --- XLock ---
 XLock.clock.count: 1
