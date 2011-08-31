@@ -108,8 +108,12 @@ URxvt*internalBorder: 1
 URxvt.keysym.C-plus: command:\033]710;xft:monospace:size=9\007\033]711;xft:monospace:size=9\007
 URxvt.keysym.C-minus: command:\033]710;xft:monospace:size=8\007\033]711;xft:monospace:size=8\007
 URxvt*letterSpace: -1
+URxvt.matcher.button:   1
+URxvt.perl-ext-common:  default,matcher
 URxvt*scrollBar: false
 URxvt*transparent: true
+URxvt.urlLauncher:      /usr/bin/firefox
+
 
 !! --- Fonts ---
 !! https://wiki.archlinux.org/index.php/Font_Configuration
