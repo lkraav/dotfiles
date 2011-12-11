@@ -9,6 +9,31 @@ require("naughty")
 -- Vicious library
 require("vicious")
 
+-- {{{ Error handling
+-- Check if awesome encountered an error during startup and fell back to
+-- another config (This code will only ever execute for the fallback config)
+if awesome.startup_errors then
+    naughty.notify({ preset = naughty.config.presets.critical,
+                     title = "Oops, there were errors during startup!",
+                     text = awesome.startup_errors })
+end
+
+-- Handle runtime errors after startup
+do
+    local in_error = false
+    awesome.add_signal("debug::error", function (err)
+        -- Make sure we don't go into an endless error loop
+        if in_error then return end
+        in_error = true
+
+        naughty.notify({ preset = naughty.config.presets.critical,
+                         title = "Oops, an error happened!",
+                         text = err })
+        in_error = false
+    end)
+end
+-- }}}
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init(awful.util.getdir("config") .. "/themes/zenburn.lua")
@@ -78,7 +103,7 @@ end
 -- Create a laucher widget and a main menu
 myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awful.util.getdir("config") .. "/rc.lua" },
+   { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart },
    { "quit", awesome.quit }
 }
@@ -154,15 +179,16 @@ cpuwidget:set_color("#FF5656")
 cpuwidget:set_gradient_colors({ "#FF5656", "#88A175", "#AECF96" })
 vicious.register(cpuwidget, vicious.widgets.cpu, "$1", 1)
 -- Vicious CPU temperature widget
+--  * had to patch vicious widget to get temperatures from 3.0 coretemp.0
 thermalwidget_t0  = widget({ type = "textbox" })
 vicious.register(thermalwidget_t0, vicious.widgets.thermal,
 	function (widget, args)
 		return string.format("%02d°", args[1])
         end, 2, "thermal_zone0")
 thermalwidget_core0  = widget({ type = "textbox" })
-vicious.register(thermalwidget_core0, vicious.widgets.thermal, "$1°", 2, { "coretemp.0", "core" })
+vicious.register(thermalwidget_core0, vicious.widgets.thermal, "$1°", 2, { "coretemp.0", "core1" })
 thermalwidget_core2 = widget({ type = "textbox" })
-vicious.register(thermalwidget_core2, vicious.widgets.thermal, "$1°", 2, { "coretemp.2", "core" })
+vicious.register(thermalwidget_core2, vicious.widgets.thermal, "$1°", 2, { "coretemp.0", "core2" })
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
 
@@ -311,12 +337,12 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
-    awful.key({ modkey,           }, "ö",     function () awful.tag.incmwfact( 0.05)    end),
+    -- awful.key({ modkey,           }, "ö",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
-    awful.key({ modkey, "Shift"   }, "ö",     function () awful.tag.incnmaster(-1)      end),
+    -- awful.key({ modkey, "Shift"   }, "ö",     function () awful.tag.incnmaster(-1)      end),
     awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
-    awful.key({ modkey, "Control" }, "ö",     function () awful.tag.incncol(-1)         end),
+    -- awful.key({ modkey, "Control" }, "ö",     function () awful.tag.incncol(-1)         end),
     awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
@@ -415,39 +441,45 @@ awful.rules.rules = {
                      buttons = clientbuttons } },
     -- Set Firefox to always map on tags number 1 of screen 1.
     { rule = { class = "Firefox" },
-       properties = { tag = tags[1][1] } },
+      properties = { tag = tags[1][1] } },
     { rule = { class = "Gvim" },
       properties = { size_hints_honor = false } },
+    { rule = { name = "leho@vmr45:~" },
+      properties = { maximized_vertical = true, maximized_horizontal = true } },
     { rule = { class = "KeePass.exe" },
-       properties = { maximized_vertical = true, maximized_horizontal = true } },
+      properties = { maximized_vertical = true, maximized_horizontal = true } },
     { rule = { class = "Mirage" },
-       properties = { maximized_vertical = true, maximized_horizontal = true } },
+      properties = { maximized_vertical = true, maximized_horizontal = true } },
     { rule = { class = "Navigator" },
-       properties = { tag = tags[1][1], maximized_vertical = true, maximized_horizontal = true } },
+      properties = { tag = tags[1][1], maximized_vertical = true, maximized_horizontal = true } },
+    { rule = { name = "Picasa 3" },
+      properties = { tag = tags[1][4] } },
     { rule = { class = "pinentry" },
-        properties = { floating = true }, callback = awful.placement.centered },
+      properties = { floating = true }, callback = awful.placement.centered },
     { rule = { name = "Scan results" },
-        callback = function(c)
-            c:geometry( { width = 800, height = 400 } )
-        end },
+      callback = function(c)
+          c:geometry( { width = 800, height = 400 } )
+      end },
     { rule = { class = "Skype" },
       properties = { tag = tags[1][5] } },
     { rule = { class = "Thunderbird" },
-       properties = { tag = tags[1][2] } },
+      properties = { tag = tags[1][2] } },
     { rule = { class = "Tomboy" },
-       properties = { tag = tags[1][8] } },
+      properties = { tag = tags[1][8] } },
+    { rule = { class = "Tomboy Preferences" },
+      properties = { floating = true, callback = awful.placement.centered } },
     { rule = { class = "URxvt" },
       properties = { size_hints_honor = false } },
-    { rule = { class = "Vncviewer" },
-       properties = { maximized_vertical = true, maximized_horizontal = true } },
+    { rule = { instance = "VNC Menu", instance = "VNC authentication [VncAuth]", instance = "VNC Viewer: Information" },
+      properties = { floating = true, callback = awful.placement.centered } },
     { rule = { class = "Wpa_gui" },
-        properties = { floating = true }, callback = awful.placement.centered },
+      properties = { floating = true }, callback = awful.placement.centered },
     { rule = { class = "XMind" },
-       properties = { maximized_vertical = true, maximized_horizontal = true } },
+      properties = { maximized_vertical = true, maximized_horizontal = true } },
     { rule = { class = "XTerm" },
       properties = { size_hints_honor = false } },
     { rule = { instance = "XTerm-logs" },
-       properties = { tag = tags[1][9] } },
+      properties = { tag = tags[1][9] } },
 }
 -- }}}
 
