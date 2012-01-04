@@ -103,10 +103,11 @@ xterm*toolBar: false
 
 !! --- URxvt ---
 URxvt*font: xft:monospace:size=9
+URxvt*boldFont: xft:monospace:bold:size=9
 URxvt*intensityStyles: false
 URxvt*internalBorder: 1
-URxvt.keysym.C-plus: command:\033]710;xft:monospace:size=9\007\033]711;xft:monospace:size=9\007
-URxvt.keysym.C-minus: command:\033]710;xft:monospace:size=8\007\033]711;xft:monospace:size=8\007
+URxvt.keysym.C-plus: command:\033]710;xft:monospace:size=9\007\033]711;xft:monospace:bold:size=9\007
+URxvt.keysym.C-minus: command:\033]710;xft:monospace:size=8\007\033]711;xft:monospace:bold:size=8\007
 URxvt*letterSpace: -1
 URxvt.matcher.button:   1
 URxvt.perl-ext-common:  default,matcher
