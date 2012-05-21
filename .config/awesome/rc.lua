@@ -441,7 +441,7 @@ awful.rules.rules = {
                      buttons = clientbuttons } },
     -- Set Firefox to always map on tags number 1 of screen 1.
     { rule = { class = "Firefox" }, properties = { tag = tags[1][1] } },
-      properties = { tag = tags[1][1] } },
+    { rule = { class = "Firefox", instance = "Dialog" }, callback = function(c) awful.client.movetotag(tags[mouse.screen][awful.tag.getidx()], c) end},
     { rule = { class = "google-chrome" }, properties = { tag = tags[1][1] } },
     { rule = { class = "Gvim" }, properties = { size_hints_honor = false } },
     { rule = { name = "leho@vmr45:~" }, properties = { maximized_vertical = true, maximized_horizontal = true } },
