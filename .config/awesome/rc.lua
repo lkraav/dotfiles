@@ -451,6 +451,7 @@ awful.rules.rules = {
     { rule = { class = "pinentry" }, properties = { floating = true }, callback = awful.placement.centered },
     { rule = { class = "Skype" }, properties = { tag = tags[1][5] } },
     { rule = { class = "Thunderbird" }, properties = { tag = tags[1][2] } },
+    { rule = { class = "Thunderbird", role = "EventDialog" }, properties = { floating = true, callback = awful.placement.centered } },
     { rule = { class = "Tomboy" }, properties = { tag = tags[1][8] } },
     { rule = { class = "Tomboy Preferences" }, properties = { floating = true, callback = awful.placement.centered } },
     { rule = { class = "URxvt" }, properties = { size_hints_honor = false } },
