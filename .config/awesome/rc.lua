@@ -438,7 +438,8 @@ awful.rules.rules = {
                      border_color = beautiful.border_normal,
                      focus = true,
                      keys = clientkeys,
-                     buttons = clientbuttons } },
+                     buttons = clientbuttons },
+      callback = awful.client.setslave },
     -- Set Firefox to always map on tags number 1 of screen 1.
     { rule = { class = "Firefox" }, properties = { tag = tags[1][1] } },
     { rule = { class = "Firefox", instance = "Dialog" }, callback = function(c) awful.client.movetotag(tags[mouse.screen][awful.tag.getidx()], c) end},
