@@ -463,6 +463,7 @@ awful.rules.rules = {
     { rule = { name = "leho@vmr45:~" }, properties = { maximized_vertical = true, maximized_horizontal = true } },
     { rule = { name = "Picasa 3" }, properties = { tag = tags[1][4] } },
     { rule = { name = "Scan results" }, callback = function(c) c:geometry( { width = 800, height = 400 } ) end },
+    { rule_any = { name = { "Enter name of file to save to…" }, name = { "File Upload" } }, callback = function(c) awful.client.movetotag(tags[mouse.screen][awful.tag.getidx()], c) end},
 }
 -- }}}
 
