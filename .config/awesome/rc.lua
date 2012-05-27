@@ -442,7 +442,6 @@ awful.rules.rules = {
       callback = awful.client.setslave },
     -- Set Firefox to always map on tags number 1 of screen 1.
     { rule = { class = "Firefox" }, properties = { tag = tags[1][1] } },
-    { rule = { class = "Firefox", instance = "Dialog" }, callback = function(c) awful.client.movetotag(tags[mouse.screen][awful.tag.getidx()], c) end},
     { rule = { class = "google-chrome" }, properties = { tag = tags[1][1] } },
     { rule = { class = "Gvim" }, properties = { size_hints_honor = false } },
     { rule = { class = "KeePass.exe" }, properties = { maximized_vertical = true, maximized_horizontal = true } },
@@ -463,7 +462,8 @@ awful.rules.rules = {
     { rule = { name = "leho@vmr45:~" }, properties = { maximized_vertical = true, maximized_horizontal = true } },
     { rule = { name = "Picasa 3" }, properties = { tag = tags[1][4] } },
     { rule = { name = "Scan results" }, callback = function(c) c:geometry( { width = 800, height = 400 } ) end },
-    { rule_any = { name = { "Enter name of file to save to…" }, name = { "File Upload" } }, callback = function(c) awful.client.movetotag(tags[mouse.screen][awful.tag.getidx()], c) end},
+    { rule_any = { instance = { "Dialog", "Popup" } }, callback = function(c) awful.client.movetotag(tags[mouse.screen][awful.tag.getidx()], c) end },
+    { rule_any = { name = { "Enter name of file to save to…", "File Upload", "Save As" } }, callback = function(c) c:geometry( { width = 800, height = 600 } ); awful.placement.centered(c); awful.client.movetotag(tags[mouse.screen][awful.tag.getidx()], c) end},
 }
 -- }}}
 
