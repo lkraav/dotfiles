@@ -158,7 +158,13 @@ assign [class="Skype"] 5: msg
 assign [class="Tomboy"] 8: tom
 assign [instance="Xterm-logs"] 9: log
 
+# move focused container to external monitor
+bindsym $mod+o move workspace to output HDMI1
+bindsym $mod+Shift+o move workspace to output LVDS1
+
 exec xsetroot -solid "#e1dce0"
 
 for_window [class="Thunderbird"] layout tabbed
 for_window [class="Wpa_gui"] floating enable
+
+workspace "2: @ " output HDMI1
