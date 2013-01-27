@@ -167,4 +167,17 @@ exec xsetroot -solid "#e1dce0"
 for_window [class="Thunderbird"] layout tabbed
 for_window [class="Wpa_gui"] floating enable
 
+
+# 90x3a
+bindcode 121 exec --no-startup-id amixer set Master toggle -q
+bindcode 122 exec --no-startup-id amixer set Master 10%- unmute -q
+bindcode 123 exec --no-startup-id amixer set Master 10%+ unmute -q
+bindcode 156 exec --no-startup-id toggle.sh /sys/devices/platform/samsung/performance_level
+bindcode 157 exec --no-startup-id toggle.sh /sys/devices/platform/samsung/battery_life_extender
+bindcode 232 exec --no-startup-id xbacklight -dec 10
+bindcode 233 exec --no-startup-id xbacklight -inc 10
+bindcode 235 exec --no-startup-id xrandr --output LVDS1 --auto --output HDMI1 --auto --above LVDS1 --primary; nitrogen-bg
+bindcode 237 exec --no-startup-id toggle.sh /sys/devices/platform/samsung/leds/samsung\:\:kbd_backlight/brightness 5
+bindcode 238 exec --no-startup-id toggle.sh /sys/devices/platform/samsung/leds/samsung\:\:kbd_backlight/brightness 5
+bindcode 246 exec --no-startup-id sudo toggle.sh /sys/devices/platform/samsung/rfkill/rfkill0/state
 workspace "2: @ " output HDMI1
