@@ -142,10 +142,9 @@ bar {
             # solarized
             background #073642
             statusline #eee8d5
-            focused_workspace #657b83 #fdf6e3 #839496
-            active_workspace #587e75 #002b36 #eee8d5
-            inactive_workspace #657b83 #002b36 #eee8d5
-            urgent_workspace #d33682 #073642
+            focused_workspace #cb4b16 #cb4b16 #eee8d5
+            active_workspace #cb4b16 #cb4b16 #eee8d5
+            inactive_workspace #b58900 #b58900 #eee8d5
         }
 }
 
@@ -161,6 +160,11 @@ assign [instance="Xterm-logs"] 9: log
 # move focused container to external monitor
 bindsym $mod+o move workspace to output HDMI1
 bindsym $mod+Shift+o move workspace to output LVDS1
+
+# class                 border  backgr. text    indicator
+client.focused          #859900 #859900 #fdf6e3 #2e9ef4
+client.focused_inactive #268bd2 #268bd2 #fdf6e3 #484e50
+client.unfocused        #333333 #93a1a1 #fdf6e3 #292d2e
 
 exec xsetroot -solid "#e1dce0"
 
