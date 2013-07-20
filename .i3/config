@@ -24,7 +24,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+C kill
 
 # start dmenu (a program launcher)
-bindsym $mod+r exec dmenu_run -b -fn monospace:size=10 -nb "#073642" -nf "#eee8d5" -p "> "
+bindsym $mod+r exec i3-dmenu-desktop --dmenu='dmenu -fn monospace:bold:size=9 -nb "#eee8d5" -nf "#073642" -sb "#dc322f" -p "> " -h 19'
 
 # change focus
 bindsym $mod+j focus left
